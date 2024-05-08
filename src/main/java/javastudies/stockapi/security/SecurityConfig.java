@@ -25,7 +25,7 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
 
         http.authorizeHttpRequests(request ->
-                request.requestMatchers("/my-stocks/auth/register").permitAll()
+                request.requestMatchers("/my-stocks/auth/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(formLogin -> {
                     formLogin.loginPage("/my-stocks/auth/login")
