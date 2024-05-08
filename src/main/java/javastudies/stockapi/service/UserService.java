@@ -1,7 +1,10 @@
 package javastudies.stockapi.service;
 
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+import javastudies.stockapi.model.User;
+
+public interface UserService {
+
+    public User createUser(User newUser);
+
 }
