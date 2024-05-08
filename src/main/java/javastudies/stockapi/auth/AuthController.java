@@ -19,7 +19,7 @@ public class AuthController {
 
     @GetMapping("/register")
     public String register(){
-        return "register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
@@ -35,6 +35,6 @@ public class AuthController {
     @GetMapping("/login")
     public String login(Model m) {
         m.addAttribute("fullName", "LeozinDoGrau");
-        return "login";
+        return "auth/login";
     }
 }

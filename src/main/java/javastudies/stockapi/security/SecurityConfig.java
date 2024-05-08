@@ -27,9 +27,9 @@ public class SecurityConfig {
         http.authorizeHttpRequests(request ->
                 request.requestMatchers("/my-stocks/auth/**").permitAll()
                         .anyRequest().authenticated())
-                .formLogin(formLogin -> {
-                    formLogin.loginPage("/my-stocks/auth/login")
-                            .successForwardUrl("/my-stocks/home/");
+                .formLogin(form -> {
+                    form.loginPage("/my-stocks/auth/login")
+                            .successForwardUrl("/my-stocks/home");
                 })
                 .logout(LogoutConfigurer::permitAll);
 
