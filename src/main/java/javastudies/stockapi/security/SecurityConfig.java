@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -28,7 +30,7 @@ public class SecurityConfig {
                 request.requestMatchers("/my-stocks/auth/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> {
-                    form.loginPage("/my-stocks/auth/login")
+                    form.loginPage("/my-stocks/auth/login").permitAll()
                             .successForwardUrl("/my-stocks/home");
                 })
                 .logout(LogoutConfigurer::permitAll);
