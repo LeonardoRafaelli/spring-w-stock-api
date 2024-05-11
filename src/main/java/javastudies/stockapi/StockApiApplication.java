@@ -1,11 +1,11 @@
 package javastudies.stockapi;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 @SpringBootApplication
 public class StockApiApplication {
@@ -16,12 +16,17 @@ public class StockApiApplication {
 	public static void main(String[] args) throws Exception {
 //		SpringApplication.run(StockApiApplication.class, args);
 
+		// Request
 		HttpRequest getRequest = HttpRequest.newBuilder()
 				.uri(new URI(STR."\{BASE_URL}function=\{FUNCTION}&symbol=\{SYMBOL}&apikey=\{API_KEY}"))
 				.GET().build();
 
-		System.out.println(getRequest);
 
+		HttpClient httpClient = HttpClient.newHttpClient();
+
+		HttpResponse<String> getResponse = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+		
+		System.out.println(getResponse.body());
 	}
 
 }
