@@ -12,10 +12,7 @@ import java.net.http.HttpResponse;
 @SpringBootApplication
 @EnableConfigurationProperties(AlphaVantageConfig.class)
 public class StockApiApplication {
-//	private static final String BASE_URL = "https://www.alphavantage.co/query?";
-//	private static final String FUNCTION = "TIME_SERIES_MONTHLY";
-//	private static final String SYMBOL = "AAPL";
-//	private static final String API_KEY = "UV0T6HSE3GZFLN42";
+
 	public static void main(String[] args) {
 		SpringApplication.run(StockApiApplication.class, args);
 
