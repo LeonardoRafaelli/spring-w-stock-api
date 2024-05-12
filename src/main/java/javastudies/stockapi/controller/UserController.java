@@ -19,10 +19,21 @@ public class UserController {
 
     private final AlphaVantageConfig alphaVantageConfig;
 
+
+
     @RequestMapping("/home")
     public String getGreetings(Model m){
-        m.addAttribute("api_key", alphaVantageConfig.apiKey());
-        m.addAttribute("api_url", alphaVantageConfig.apiUrl());
+        //		// Builds the Request
+        //		HttpRequest getRequest = HttpRequest.newBuilder()
+        //				.uri(new URI(STR."\{BASE_URL}function=\{FUNCTION}&symbol=\{SYMBOL}&apikey=\{API_KEY}"))
+        //				.build();
+        //
+        //
+        //		// Creates the HttpClient to send the request
+        //		HttpClient httpClient = HttpClient.newHttpClient();
+        //		HttpResponse<String> getResponse = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+        //
+        //		System.out.println(getResponse.body());
         return "home";
     }
 
