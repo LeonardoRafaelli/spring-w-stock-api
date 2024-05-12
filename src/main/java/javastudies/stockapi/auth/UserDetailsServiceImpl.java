@@ -1,8 +1,7 @@
-package javastudies.stockapi.security;
+package javastudies.stockapi.auth;
 
 import javastudies.stockapi.model.User;
 import javastudies.stockapi.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

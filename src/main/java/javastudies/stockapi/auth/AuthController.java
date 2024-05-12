@@ -24,7 +24,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public String registerNewUser(@ModelAttribute User user) {
-        System.out.println(STR."User\{user}");
         User newUser = userService.createUser(user);
         if(newUser != null) {
             return "redirect:/login";

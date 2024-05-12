@@ -1,4 +1,4 @@
-package javastudies.stockapi.security;
+package javastudies.stockapi.auth;
 
 import javastudies.stockapi.model.User;
 import lombok.AllArgsConstructor;

@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepo;
+    private final AccountServiceImpl accountService;
 
     @Override
     public User createUser(User newUser) {
         newUser.setPassword(new BCryptPasswordEncoder().encode(newUser.getPassword()));
         newUser.setRole(UserRole.USER);
+        // Creates new user Account
+        newUser.setAccount(accountService.createAccount());
         return userRepo.save(newUser);
     }
 }

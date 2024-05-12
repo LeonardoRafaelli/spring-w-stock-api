@@ -19,4 +19,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    @OneToOne
+    private Account account;
+
 }
