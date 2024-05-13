@@ -6,7 +6,10 @@
 </head>
 <body>
     <h1>Home - My Stocks</h1>
-    <p>[[${api_url}]]</p>
-    <p>[[${api_key}]]</p>
+    <form action="/get-stock-info" method="post">
+        <label> Stock Symbol
+            <input name="stockSymbol">
+        </label>
+    </form>
 </body>
 </html>
