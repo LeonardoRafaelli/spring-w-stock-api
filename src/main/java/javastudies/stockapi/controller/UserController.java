@@ -1,14 +1,12 @@
 package javastudies.stockapi.controller;
 
 import javastudies.stockapi.AlphaVantageConfig;
+import javastudies.stockapi.model.StockSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -18,7 +16,6 @@ import java.util.Map;
 public class UserController {
 
     private final AlphaVantageConfig alphaVantageConfig;
-
 
 
     @RequestMapping("/home")
@@ -37,4 +34,9 @@ public class UserController {
         return "home";
     }
 
+    @PostMapping("/get-stock-info")
+    public String getStockInfo(Model m, @ModelAttribute StockSearch stockSearch) {
+        System.out.println(STR."StockSymbol: \{stockSearch.getStockSymbol()}");
+        return "home";
+    };
 }
