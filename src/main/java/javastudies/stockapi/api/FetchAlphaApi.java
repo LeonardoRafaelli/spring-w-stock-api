@@ -12,14 +12,14 @@ import java.net.http.HttpResponse;
 @Builder
 public class FetchAlphaApi {
 
-    private static final String apiBaseUrl = "https://www.alphavantage.co/query?";
+    private final String apiBaseUrl = "https://www.alphavantage.co/query?";
     private String apiKey;
-    private String apiFunction;
+    private AlphaVantageFunctionType apiFunction;
     private String symbol;
 
     public String getRequest() {
         try{
-            String url = STR."\{apiBaseUrl}&function=\{apiFunction}&symbol=\{symbol}&apikey=\{apiKey}";
+            String url = STR."\{apiBaseUrl}&function=\{apiFunction.toString()}&symbol=\{symbol}&apikey=\{apiKey}";
             HttpRequest getRequest = HttpRequest.newBuilder()
                     .uri(new URI(url))
                     .build();
