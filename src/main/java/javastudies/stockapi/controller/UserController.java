@@ -1,8 +1,12 @@
 package javastudies.stockapi.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import javastudies.stockapi.DTO.GlobalQuoteDTO;
 import javastudies.stockapi.DTO.StockSearchDTO;
 import javastudies.stockapi.api.AlphaVantageConfig;
 import javastudies.stockapi.api.AlphaVantageFunctionType;
+import javastudies.stockapi.api.CustomFieldNamingStrategy;
 import javastudies.stockapi.api.FetchAlphaApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -23,14 +27,24 @@ public class UserController {
 
     @PostMapping("/get-stock-info")
     public String getStockInfo(Model m, @ModelAttribute StockSearchDTO stockSearch) {
-        System.out.println(STR."StockSymbol: \{stockSearch.getSymbol()}");
-        System.out.println(STR."REQUEST\{
-                FetchAlphaApi.builder()
-                .apiFunction(AlphaVantageFunctionType.GLOBAL_QUOTE)
-                .symbol(stockSearch.getSymbol())
-                .build()
-                .getRequest()}"
-        );
+
+        Gson gson = new GsonBuilder()
+                .setFieldNamingStrategy(new CustomFieldNamingStrategy())
+                .create();
+
+        String apiResponse = FetchAlphaApi.builder()
+        .apiFunction(AlphaVantageFunctionType.GLOBAL_QUOTE)
+        .symbol(stockSearch.getSymbol())
+        .build()
+        .getRequest();
+
+        System.out.println(STR."Response: \{apiResponse}");
+
+        GlobalQuoteDTO globalQuoteDTO = gson.fromJson(apiResponse, GlobalQuoteDTO.class);
+        System.out.println(STR."Global Quote DTO = \{globalQuoteDTO}");
+
+        m.addAttribute("stock", globalQuoteDTO.getGlobalQuote());
+
         return "home";
     };
 }

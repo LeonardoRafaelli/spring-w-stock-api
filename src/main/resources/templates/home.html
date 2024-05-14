@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -14,6 +14,10 @@
     </form>
     <div>
         <h3>STOCK INFO</h3>
+        <div th:if="${stock != null}">
+            <p>Symbol: [[${stock.symbol}]]</p>
+            <p>Open: [[${stock.open}]]</p>
+        </div>
     </div>
 </body>
 </html>
