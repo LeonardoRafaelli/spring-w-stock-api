@@ -1,14 +1,9 @@
 package javastudies.stockapi;
 
-import org.springframework.boot.CommandLineRunner;
+import javastudies.stockapi.api.AlphaVantageConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 @SpringBootApplication
 @EnableConfigurationProperties(AlphaVantageConfig.class)
