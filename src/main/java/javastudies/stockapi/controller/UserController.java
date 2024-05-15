@@ -8,7 +8,13 @@ import javastudies.stockapi.api.AlphaVantageConfig;
 import javastudies.stockapi.api.AlphaVantageFunctionType;
 import javastudies.stockapi.api.CustomFieldNamingStrategy;
 import javastudies.stockapi.api.FetchAlphaApi;
+import javastudies.stockapi.auth.CustomUserDetails;
+import javastudies.stockapi.model.Account;
+import javastudies.stockapi.model.User;
+import javastudies.stockapi.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +25,14 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final AlphaVantageConfig alphaVantageConfig;
+    private final UserServiceImpl userService;
+    private final Authentication authentication;
 
     @RequestMapping("/home")
     public String getGreetings(Model m){
+        CustomUserDetails userDtls = (CustomUserDetails) authentication.getPrincipal();
+        m.addAttribute("user", userDtls.getUser());
+        m.addAttribute("userAccount", userDtls.getUser().getAccount());
         return "home";
     }
 

@@ -1,6 +1,7 @@
 package javastudies.stockapi.service;
 
 
+import javastudies.stockapi.model.Account;
 import javastudies.stockapi.model.User;
 import javastudies.stockapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,4 +24,11 @@ public class UserServiceImpl implements UserService{
         newUser.setAccount(accountService.createAccount());
         return userRepo.save(newUser);
     }
+
+    @Override
+    public Account getUserAccount(String userEmail) {
+        return null;
+    }
+
+
 }
