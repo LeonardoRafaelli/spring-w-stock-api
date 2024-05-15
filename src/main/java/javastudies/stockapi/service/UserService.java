@@ -8,6 +8,4 @@ public interface UserService {
 
     User createUser(User newUser);
 
-    Account getUserAccount(String userEmail);
-
 }

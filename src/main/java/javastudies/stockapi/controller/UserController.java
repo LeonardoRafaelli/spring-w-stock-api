@@ -14,6 +14,7 @@ import javastudies.stockapi.model.User;
 import javastudies.stockapi.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +27,9 @@ public class UserController {
 
     private final AlphaVantageConfig alphaVantageConfig;
     private final UserServiceImpl userService;
-    private final Authentication authentication;
 
     @RequestMapping("/home")
-    public String getGreetings(Model m){
-        CustomUserDetails userDtls = (CustomUserDetails) authentication.getPrincipal();
+    public String getGreetings(Model m, @AuthenticationPrincipal CustomUserDetails userDtls){
         m.addAttribute("user", userDtls.getUser());
         m.addAttribute("userAccount", userDtls.getUser().getAccount());
         return "home";

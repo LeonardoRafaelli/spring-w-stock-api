@@ -13,6 +13,17 @@
         <button type="submit">Get info</button>
     </form>
     <div>
+        <h3>USER DATA</h3>
+        <div>
+            <p>Name: [[${user.fullName}]]</p>
+        </div>
+        <h2>USER ACCOUNT</h2>
+        <div>
+            <p>Balance: [[${userAccount.balance}]]</p>
+        </div>
+        <form>
+            
+        </form>
         <h3>STOCK INFO</h3>
         <div th:if="${stock != null}">
             <p>Symbol: [[${stock.symbol}]]</p>
