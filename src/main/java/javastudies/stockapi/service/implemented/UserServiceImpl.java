@@ -1,17 +1,17 @@
-package javastudies.stockapi.service;
+package javastudies.stockapi.service.implemented;
 
 
-import javastudies.stockapi.auth.CustomUserDetails;
 import javastudies.stockapi.model.User;
 import javastudies.stockapi.repository.UserRepository;
+import javastudies.stockapi.model.UserRole;
+import javastudies.stockapi.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepo;
     private final AccountServiceImpl accountService;

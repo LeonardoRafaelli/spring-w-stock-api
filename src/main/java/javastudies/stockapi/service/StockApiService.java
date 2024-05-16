@@ -1,5 +1,8 @@
 package javastudies.stockapi.service;
 
+import javastudies.stockapi.DTO.GlobalQuoteDTO;
+import javastudies.stockapi.DTO.StockSearchDTO;
+
 public interface StockApiService {
-    Object getStockTimeSeriesMonthly(String symbol);
+    GlobalQuoteDTO getStockGlobalQuote(String stockSymbol);
 }

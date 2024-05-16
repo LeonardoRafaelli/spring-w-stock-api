@@ -1,4 +1,4 @@
-package javastudies.stockapi.service;
+package javastudies.stockapi.model;
 
 public enum UserRole{
     ADMIN,

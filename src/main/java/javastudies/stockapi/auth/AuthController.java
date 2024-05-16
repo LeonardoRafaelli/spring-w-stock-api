@@ -1,10 +1,7 @@
 package javastudies.stockapi.auth;
 
 import javastudies.stockapi.model.User;
-import javastudies.stockapi.repository.UserRepository;
-import javastudies.stockapi.service.UserRole;
-import javastudies.stockapi.service.UserServiceImpl;
-import lombok.RequiredArgsConstructor;
+import javastudies.stockapi.service.implemented.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

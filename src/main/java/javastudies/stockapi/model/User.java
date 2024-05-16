@@ -1,7 +1,6 @@
 package javastudies.stockapi.model;
 
 import jakarta.persistence.*;
-import javastudies.stockapi.service.UserRole;
 import lombok.Data;
 
 @Data
