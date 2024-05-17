@@ -1,7 +1,9 @@
 package javastudies.stockapi.service.implemented;
 
 
+import javastudies.stockapi.model.Account;
 import javastudies.stockapi.model.User;
+import javastudies.stockapi.repository.AccountRepository;
 import javastudies.stockapi.repository.UserRepository;
 import javastudies.stockapi.model.UserRole;
 import javastudies.stockapi.service.UserService;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepo;
+    private final AccountRepository accountRepo;
     private final AccountServiceImpl accountService;
 
     @Override
@@ -23,6 +26,13 @@ public class UserServiceImpl implements UserService {
         // Creates new user Account
         newUser.setAccount(accountService.createAccount());
         return userRepo.save(newUser);
+    }
+
+    @Override
+    public void addMoneyToAccount(User user, double amount) {
+        Account userAccount = user.getAccount();
+        userAccount.setBalance(userAccount.getBalance() + amount);
+        accountRepo.save(userAccount);
     }
 
 

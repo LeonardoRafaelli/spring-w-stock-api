@@ -8,4 +8,5 @@ public interface UserService {
 
     User createUser(User newUser);
 
+    void addMoneyToAccount(User user, double amount);
 }

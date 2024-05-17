@@ -3,6 +3,8 @@ package javastudies.stockapi.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import javastudies.stockapi.DTO.GlobalQuoteDTO;
 import javastudies.stockapi.auth.CustomUserDetails;
+import javastudies.stockapi.model.Account;
+import javastudies.stockapi.model.User;
 import javastudies.stockapi.service.implemented.StockApiServiceImpl;
 import javastudies.stockapi.service.implemented.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -44,8 +46,11 @@ public class UserController {
     };
 
     @PostMapping("/add-money")
-    public String addMoneyToAccount(){
-        System.out.println("Chegou em Add Money");
+    public String addMoneyToAccount(
+            @RequestParam double amount,
+            @AuthenticationPrincipal CustomUserDetails userDtls
+    ){
+        userService.addMoneyToAccount(userDtls.getUser(), amount);
         return "redirect:/my-stocks/home";
     }
 
