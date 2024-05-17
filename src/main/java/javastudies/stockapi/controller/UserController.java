@@ -1,5 +1,6 @@
 package javastudies.stockapi.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import javastudies.stockapi.DTO.GlobalQuoteDTO;
 import javastudies.stockapi.auth.CustomUserDetails;
 import javastudies.stockapi.service.implemented.StockApiServiceImpl;
@@ -45,6 +46,13 @@ public class UserController {
     @PostMapping("/add-money")
     public String addMoneyToAccount(){
         System.out.println("Chegou em Add Money");
-        return "redirect:/home";
+        return "redirect:/my-stocks/home";
+    }
+
+    // Dedicated Error Page
+    @RequestMapping("/error")
+    public String handleError(HttpServletRequest request) {
+        System.out.println("Reach User Controller Handle ERror");
+        return "home";
     }
 }

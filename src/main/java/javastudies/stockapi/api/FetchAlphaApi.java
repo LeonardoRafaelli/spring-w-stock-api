@@ -1,8 +1,6 @@
 package javastudies.stockapi.api;
 
 import lombok.Builder;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -20,6 +18,7 @@ public class FetchAlphaApi {
     public String getRequest() {
         try{
             String url = STR."\{apiBaseUrl}&function=\{apiFunction.toString()}&symbol=\{symbol}&apikey=\{apiKey}";
+
             HttpRequest getRequest = HttpRequest.newBuilder()
                     .uri(new URI(url))
                     .build();
@@ -30,7 +29,7 @@ public class FetchAlphaApi {
             return response.body();
 
         }catch (Exception e){
-            System.out.println(STR."Error while making the Fetch. Error: \{e.getMessage()}");
+            System.out.println(STR."Error while trying to Fetch. Error: \{e.getMessage()}");
         }
         return "Error";
     }
