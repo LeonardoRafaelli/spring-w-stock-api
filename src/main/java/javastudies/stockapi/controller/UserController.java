@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping("/successful-login")
     public String successfulLogin() {
-        return "redirect:/home";
+        return "redirect:/my-stocks/home";
     }
 
     @RequestMapping("/home")
