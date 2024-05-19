@@ -1,7 +1,6 @@
 package javastudies.stockapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -10,9 +9,12 @@ import java.util.List;
 @Entity
 public class Portfolio {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private double totalInvested;
     private double position;
-    
+
     @OneToMany
     List<Transaction> transactions;
 }

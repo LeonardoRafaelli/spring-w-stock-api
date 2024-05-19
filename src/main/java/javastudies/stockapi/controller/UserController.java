@@ -21,6 +21,11 @@ public class UserController {
     private final UserServiceImpl userService;
     private final StockApiServiceImpl stockApiService;
 
+    @RequestMapping("/successful-login")
+    public String successfulLogin() {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/home")
     public String getGreetings(
             @RequestParam(name = "symbol", required = false) String stockSymbol,

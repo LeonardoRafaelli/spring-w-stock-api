@@ -28,7 +28,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated())
                 .formLogin(form -> {
                     form.loginPage("/my-stocks/auth/login").permitAll()
-                            .successForwardUrl("/my-stocks/home");
+                            .successForwardUrl("/my-stocks/successful-login");
                 })
                 .logout(LogoutConfigurer::permitAll);
 
