@@ -21,4 +21,7 @@ public class User {
     @OneToOne
     private Account account;
 
+    @OneToOne
+    private Portfolio portfolio;
+
 }

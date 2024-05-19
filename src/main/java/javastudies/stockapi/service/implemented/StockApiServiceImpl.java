@@ -28,6 +28,8 @@ public class StockApiServiceImpl implements StockApiService {
                 .build()
                 .getRequest();
 
+        System.out.println(STR."API Response: \{apiResponse}");
+
         return gson.fromJson(apiResponse, GlobalQuoteDTO.class);
     }
 }
