@@ -13,7 +13,6 @@ public class ErrorController {
 
     @RequestMapping("/**")
     public String handleNotFound(HttpServletRequest request){
-        System.out.println("Error Controller");
         String refererUrl = request.getHeader("Referer");
         if(refererUrl != null && !refererUrl.isEmpty()) {
             return STR."redirect:\{refererUrl}";
